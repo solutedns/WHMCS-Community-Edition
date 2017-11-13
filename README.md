@@ -15,10 +15,16 @@ This module can be used with:
  - PowerDNS with MySQL Back-end
 
 Please note the SoluteDNS Core is required for this module. You can find more information about the core at:
-https://www.solutedns.com/solutions/core/
+ - https://www.solutedns.com/solutions/core/
 
 Please see for system requirements:
-https://docs.solutedns.com/whmcs/community-edition/system-requirements/
+ - https://docs.solutedns.com/whmcs/community-edition/system-requirements/
+
+FULL PACKAGE:
+----------------------------------------------
+The full package including the SoluteDNS Core is available from:
+
+ - https://forum.solutedns.com/viewtopic.php?f=17&t=125
 
 DOCUMENTATION:
 ----------------------------------------------

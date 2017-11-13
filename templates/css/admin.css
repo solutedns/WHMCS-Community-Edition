@@ -1,0 +1,917 @@
+/**********************************************
+
+        *** SoluteDNS CE for WHMCS ***
+
+File:					template/css/admin.css
+File version:			0.17.001
+Date:					09-11-2017
+
+Copyright (C) NetDistrict 2013-2017
+All Rights Reserved
+
+**********************************************/
+
+/*
+## General CSS
+*/
+.info_text {
+	line-height: 35px;
+	font-weight: normal !important;
+}
+.label-form .title label {
+	line-height: 35px;
+}
+.title {
+	font-weight: bold;
+}
+.chx_label {
+	line-height: 16px;
+	margin-left: 24px;
+}
+form label {
+	font-size: 12px;
+}
+form p {
+	font-size: 12px;
+}
+.spacer_10 {
+	margin-top: 10px;
+}
+.spacer_15 {
+	margin-top: 15px;
+}
+.form-100 {
+	width: 100%;
+}
+.deleteselected {
+	margin-top: -20px;
+	position: relative;
+}
+#textarea_export {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 0.8em;
+	height: 400px;
+	white-space: pre;
+}
+#textarea_import {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 0.8em;
+	height: 400px;
+	white-space: pre;
+}
+
+/*
+## Loading CSS
+*/
+.data_spinner {
+	width: 100px;
+	text-align: center;
+	display: inline-block;
+}
+.data_spinner > div {
+	width: 18px;
+	height: 18px;
+	background-color: #333;
+	border-radius: 100%;
+	display: inline-block;
+	-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+	margin-left: 7px;
+	margin-right: 7px;
+}
+.data_spinner .bounce1 {
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+.data_spinner .bounce2 {
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+@-webkit-keyframes sk-bouncedelay {
+	0%, 80%, 100% {
+		-webkit-transform: scale(0)
+	}
+	40% {
+		-webkit-transform: scale(1.0)
+	}
+}
+@keyframes sk-bouncedelay {
+	0%, 80%, 100% {
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	}
+	40% {
+		-webkit-transform: scale(1.0);
+		transform: scale(1.0);
+	}
+}
+
+/*
+## Checkboxes Buttons
+*/
+.checkbox {
+	padding-left: 6px;
+}
+.tablecheckbox {
+	padding-top: 9px;
+	padding-left: 8px;
+	width: 100%;
+	margin-left: 50%;
+}
+.checkbox label {
+	display: inline-block;
+	position: relative;
+	padding-left: 5px;
+}
+.checkbox label::before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	width: 17px;
+	height: 17px;
+	left: 0;
+	margin-left: -30px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	background-color: #fff;
+	-webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+	-o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+	transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+.checkbox label::after {
+	display: inline-block;
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	left: 0;
+	top: 0;
+	margin-left: -30px;
+	padding-left: 3px;
+	padding-top: 1px;
+	font-size: 11px;
+	color: #555555;
+}
+.checkbox input[type="checkbox"] {
+	opacity: 0;
+}
+.checkbox input[type="checkbox"]:focus + label::before {
+	outline: thin dotted;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+.checkbox input[type="checkbox"]:checked + label::after {
+	font-family: 'FontAwesome';
+	content: "\f00c";
+}
+.checkbox input[type="checkbox"]:disabled + label {
+	opacity: 0.65;
+}
+.checkbox input[type="checkbox"]:disabled + label::before {
+	background-color: #eeeeee;
+	cursor: not-allowed;
+}
+.checkbox.checkbox-circle label::before {
+	border-radius: 50%;
+}
+.checkbox.checkbox-inline {
+	margin-top: 0;
+}
+.checkbox-primary input[type="checkbox"]:checked + label::before {
+	background-color: #428bca;
+	border-color: #428bca;
+}
+.checkbox-primary input[type="checkbox"]:checked + label::after {
+	color: #fff;
+}
+.checkbox-danger input[type="checkbox"]:checked + label::before {
+	background-color: #d9534f;
+	border-color: #d9534f;
+}
+.checkbox-danger input[type="checkbox"]:checked + label::after {
+	color: #fff;
+}
+.checkbox-info input[type="checkbox"]:checked + label::before {
+	background-color: #5bc0de;
+	border-color: #5bc0de;
+}
+.checkbox-info input[type="checkbox"]:checked + label::after {
+	color: #fff;
+}
+.checkbox-warning input[type="checkbox"]:checked + label::before {
+	background-color: #f0ad4e;
+	border-color: #f0ad4e;
+}
+.checkbox-warning input[type="checkbox"]:checked + label::after {
+	color: #fff;
+}
+.checkbox-success input[type="checkbox"]:checked + label::before {
+	background-color: #5cb85c;
+	border-color: #5cb85c;
+}
+.checkbox-success input[type="checkbox"]:checked + label::after {
+	color: #fff;
+}
+.radio {
+	padding-left: 20px;
+}
+.radio label {
+	display: inline-block;
+	position: relative;
+	padding-left: 5px;
+}
+.radio label::before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	width: 17px;
+	height: 17px;
+	left: 0;
+	margin-left: -20px;
+	border: 1px solid #cccccc;
+	border-radius: 50%;
+	background-color: #fff;
+	-webkit-transition: border 0.15s ease-in-out;
+	-o-transition: border 0.15s ease-in-out;
+	transition: border 0.15s ease-in-out;
+}
+.radio label::after {
+	display: inline-block;
+	position: absolute;
+	content: " ";
+	width: 11px;
+	height: 11px;
+	left: 3px;
+	top: 9px; /* Prev. 3px*/
+	margin-left: -20px;
+	border-radius: 50%;
+	background-color: #555555;
+	-webkit-transform: scale(0, 0);
+	-ms-transform: scale(0, 0);
+	-o-transform: scale(0, 0);
+	transform: scale(0, 0);
+	-webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+	-moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+	-o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+	transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+}
+.radio input[type="radio"] {
+	opacity: 0;
+}
+.radio input[type="radio"]:focus + label::before {
+	outline: thin dotted;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+.radio input[type="radio"]:checked + label::after {
+	-webkit-transform: scale(1, 1);
+	-ms-transform: scale(1, 1);
+	-o-transform: scale(1, 1);
+	transform: scale(1, 1);
+}
+.radio input[type="radio"]:disabled + label {
+	opacity: 0.65;
+}
+.radio input[type="radio"]:disabled + label::before {
+	cursor: not-allowed;
+}
+.radio.radio-inline {
+	margin-top: 0;
+}
+.radio-primary input[type="radio"] + label::after {
+	background-color: #428bca;
+}
+.radio-primary input[type="radio"]:checked + label::before {
+	border-color: #428bca;
+}
+.radio-primary input[type="radio"]:checked + label::after {
+	background-color: #428bca;
+}
+.radio-danger input[type="radio"] + label::after {
+	background-color: #d9534f;
+}
+.radio-danger input[type="radio"]:checked + label::before {
+	border-color: #d9534f;
+}
+.radio-danger input[type="radio"]:checked + label::after {
+	background-color: #d9534f;
+}
+.radio-info input[type="radio"] + label::after {
+	background-color: #5bc0de;
+}
+.radio-info input[type="radio"]:checked + label::before {
+	border-color: #5bc0de;
+}
+.radio-info input[type="radio"]:checked + label::after {
+	background-color: #5bc0de;
+}
+.radio-warning input[type="radio"] + label::after {
+	background-color: #f0ad4e;
+}
+.radio-warning input[type="radio"]:checked + label::before {
+	border-color: #f0ad4e;
+}
+.radio-warning input[type="radio"]:checked + label::after {
+	background-color: #f0ad4e;
+}
+.radio-success input[type="radio"] + label::after {
+	background-color: #5cb85c;
+}
+.radio-success input[type="radio"]:checked + label::before {
+	border-color: #5cb85c;
+}
+.radio-success input[type="radio"]:checked + label::after {
+	background-color: #5cb85c;
+}
+
+/*
+## Bootstrap
+*/
+.tooltip-inner {
+	max-width: none;
+	white-space: nowrap;
+}
+.dropmenu_desc {
+	margin-left: 10px;
+}
+.dnsfield {
+	width: 100% !important;
+}
+
+/*
+## NProgress Bar
+*/
+
+/* Make clicks pass-through */
+#nprogress {
+	pointer-events: none;
+}
+#nprogress .bar {
+	background: #29d;
+	position: fixed;
+	z-index: 1031;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 3px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+	display: block;
+	position: absolute;
+	right: 0px;
+	width: 100px;
+	height: 100%;
+	box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+	opacity: 0.5;
+	-webkit-transform: rotate(1deg) translate(0px, 0px);
+	-ms-transform: rotate(1deg) translate(0px, 0px);
+	transform: rotate(1deg) translate(0px, 0px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+	display: block;
+	position: fixed;
+	z-index: 1031;
+	top: 15px;
+	right: 15px;
+}
+#nprogress .spinner-icon {
+	width: 18px;
+	height: 18px;
+	box-sizing: border-box;
+	border: solid 2px transparent;
+	border-top-color: #29d;
+	border-left-color: #29d;
+	border-radius: 50%;
+	-webkit-animation: nprogress-spinner 400ms linear infinite;
+	animation: nprogress-spinner 400ms linear infinite;
+}
+.nprogress-custom-parent {
+	overflow: hidden;
+	position: relative;
+}
+.nprogress-custom-parent #nprogress .spinner,  .nprogress-custom-parent #nprogress .bar {
+	position: absolute;
+}
+@-webkit-keyframes nprogress-spinner {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+@keyframes nprogress-spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/*
+## Alert Boxes
+*/
+.alert2 {
+	padding: 18px;
+	margin: 10px 0;
+	border: 1px solid #eee;
+	border-left-width: 5px;
+	border-radius: 3px;
+	background-color: #FDFDFD;
+}
+.alert2 h4 {
+	margin-top: 0;
+	margin-bottom: 5px;
+	padding: 0;
+}
+.alert2 p:last-child {
+	margin-bottom: 0;
+	font-size: 12px !important;
+	line-height: 1.42857;
+	color: #333;
+	padding: 0;
+}
+.alert2 code {
+	border-radius: 3px
+}
+.alert2 {
+	margin-top: 5px
+}
+.alert2-danger {
+	border-color: #F9E8E8;
+	border-left-color: #c60f13
+}
+.alert2-danger h4 {
+	color: #c60f13
+}
+.msg .alert2-danger p {
+	font-weight: bold;
+	color: #c60f13
+}
+.alert2-warning {
+	border-color: #FBEDDB;
+	border-left-color: #e3b000
+}
+.alert2-warning h4 {
+	color: #e3b000
+}
+.msg .alert2-warning p {
+	font-weight: bold;
+	color: #e3b000
+}
+.alert2-info {
+	border-color: #D6E3F8;
+	border-left-color: #2ba6cb
+}
+.alert2-info h4 {
+	color: #2ba6cb
+}
+.msg .alert2-info p {
+	font-weight: bold;
+	color: #2ba6cb
+}
+.alert2-success {
+	border-color: #C7D7C4;
+	border-left-color: #5da423;
+}
+.alert2-success h4 {
+	color: #5da423
+}
+.msg .alert2-success p {
+	font-weight: bold;
+	color: #5da423
+}
+
+/*
+## DataTable styles
+*/
+table.dataTable {
+	width: 100%;
+	margin: 0 auto;
+	clear: both;
+	border-collapse: separate;
+	border-spacing: 1px;
+	font-size: 13px;
+}
+table th:first-child {
+	-webkit-border-top-left-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	border-top-left-radius: 3px;
+}
+table th:last-child {
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	border-top-right-radius: 3px;
+}
+table.dataTable thead th,  table.dataTable thead td {
+	padding: 8px 18px;
+	font-weight: bold;
+	color: #FFF;
+	background-color: #1A4D80 !important;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+table.dataTable thead th:active,  table.dataTable thead td:active {
+	outline: none;
+}
+table.dataTable tfoot th,  table.dataTable tfoot td {
+	padding: 10px 18px 6px 18px;
+	border-top: 1px solid #111111;
+}
+table.dataTable td,  table.dataTable th {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+table.dataTable {
+	clear: both;
+	margin-top: 6px !important;
+	margin-bottom: 6px !important;
+	max-width: none !important;
+}
+table.dataTable thead .sorting,  table.dataTable thead .sorting_asc,  table.dataTable thead .sorting_desc,  table.dataTable thead .sorting_asc_disabled,  table.dataTable thead .sorting_desc_disabled {
+	cursor: pointer;
+	position: relative;
+}
+table.dataTable thead .sorting:after,  table.dataTable thead .sorting_asc:after,  table.dataTable thead .sorting_desc:after {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	display: block;
+	font-family: 'Glyphicons Halflings';
+	opacity: 0.7;
+}
+table.dataTable thead .sorting:after {
+	opacity: 0.3;
+	content: "\e150";/* sort */
+}
+table.dataTable thead .sorting_asc:after {
+	content: "\e155";/* sort-by-attributes */
+}
+table.dataTable thead .sorting_desc:after {
+	content: "\e156";/* sort-by-attributes-alt */
+}
+div.dataTables_scrollBody table.dataTable thead .sorting:after,  div.dataTables_scrollBody table.dataTable thead .sorting_asc:after,  div.dataTables_scrollBody table.dataTable thead .sorting_desc:after {
+	display: none;
+}
+table.dataTable thead .sorting_asc_disabled:after,  table.dataTable thead .sorting_desc_disabled:after {
+	color: #eee;
+}
+table.dataTable tbody tr {
+	background-color: white;
+}
+table.dataTable tbody tr.selected {
+	background-color: #b0bed9;
+}
+table.dataTable tbody th,  table.dataTable tbody td {
+	padding: 8px 10px;
+}
+table.dataTable.row-border tbody th,  table.dataTable.row-border tbody td,  table.dataTable.display tbody th,  table.dataTable.display tbody td {
+	border-top: 1px solid #dddddd;
+}
+table.dataTable.row-border tbody tr:first-child th,  table.dataTable.row-border tbody tr:first-child td,  table.dataTable.display tbody tr:first-child th,  table.dataTable.display tbody tr:first-child td {
+	border-top: none;
+}
+table.dataTable.cell-border tbody th,  table.dataTable.cell-border tbody td {
+}
+table.dataTable.cell-border tbody tr th:first-child,  table.dataTable.cell-border tbody tr td:first-child {
+}
+table.dataTable.cell-border tbody tr:first-child th,  table.dataTable.cell-border tbody tr:first-child td {
+	border-top: none;
+}
+table.dataTable.stripe tbody tr.odd,  table.dataTable.display tbody tr.odd {
+	background-color: #f9f9f9;
+}
+table.dataTable.stripe tbody tr.odd.selected,  table.dataTable.display tbody tr.odd.selected {
+	background-color: #abb9d3;
+}
+table.dataTable.hover tbody tr:hover,  table.dataTable.hover tbody tr.odd:hover,  table.dataTable.hover tbody tr.even:hover,  table.dataTable.display tbody tr:hover,  table.dataTable.display tbody tr.odd:hover,  table.dataTable.display tbody tr.even:hover {
+	background-color: whitesmoke;
+}
+table.dataTable.hover tbody tr:hover.selected,  table.dataTable.hover tbody tr.odd:hover.selected,  table.dataTable.hover tbody tr.even:hover.selected,  table.dataTable.display tbody tr:hover.selected,  table.dataTable.display tbody tr.odd:hover.selected,  table.dataTable.display tbody tr.even:hover.selected {
+	background-color: #a9b7d1;
+}
+table.dataTable.order-column tbody tr > .sorting_1,  table.dataTable.order-column tbody tr > .sorting_2,  table.dataTable.order-column tbody tr > .sorting_3,  table.dataTable.display tbody tr > .sorting_1,  table.dataTable.display tbody tr > .sorting_2,  table.dataTable.display tbody tr > .sorting_3 {
+	background-color: #f9f9f9;
+}
+table.dataTable.order-column tbody tr.selected > .sorting_1,  table.dataTable.order-column tbody tr.selected > .sorting_2,  table.dataTable.order-column tbody tr.selected > .sorting_3,  table.dataTable.display tbody tr.selected > .sorting_1,  table.dataTable.display tbody tr.selected > .sorting_2,  table.dataTable.display tbody tr.selected > .sorting_3 {
+	background-color: #acbad4;
+}
+table.dataTable.display tbody tr.odd > .sorting_1,  table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+	background-color: #f1f1f1;
+}
+table.dataTable.display tbody tr.odd > .sorting_2,  table.dataTable.order-column.stripe tbody tr.odd > .sorting_2 {
+	background-color: #f3f3f3;
+}
+table.dataTable.display tbody tr.odd > .sorting_3,  table.dataTable.order-column.stripe tbody tr.odd > .sorting_3 {
+	background-color: whitesmoke;
+}
+table.dataTable.display tbody tr.odd.selected > .sorting_1,  table.dataTable.order-column.stripe tbody tr.odd.selected > .sorting_1 {
+	background-color: #a6b3cd;
+}
+table.dataTable.display tbody tr.odd.selected > .sorting_2,  table.dataTable.order-column.stripe tbody tr.odd.selected > .sorting_2 {
+	background-color: #a7b5ce;
+}
+table.dataTable.display tbody tr.odd.selected > .sorting_3,  table.dataTable.order-column.stripe tbody tr.odd.selected > .sorting_3 {
+	background-color: #a9b6d0;
+}
+table.dataTable.display tbody tr.even > .sorting_1,  table.dataTable.order-column.stripe tbody tr.even > .sorting_1 {
+	background-color: #f9f9f9;
+}
+table.dataTable.display tbody tr.even > .sorting_2,  table.dataTable.order-column.stripe tbody tr.even > .sorting_2 {
+	background-color: #fbfbfb;
+}
+table.dataTable.display tbody tr.even > .sorting_3,  table.dataTable.order-column.stripe tbody tr.even > .sorting_3 {
+	background-color: #fdfdfd;
+}
+table.dataTable.display tbody tr.even.selected > .sorting_1,  table.dataTable.order-column.stripe tbody tr.even.selected > .sorting_1 {
+	background-color: #acbad4;
+}
+table.dataTable.display tbody tr.even.selected > .sorting_2,  table.dataTable.order-column.stripe tbody tr.even.selected > .sorting_2 {
+	background-color: #adbbd6;
+}
+table.dataTable.display tbody tr.even.selected > .sorting_3,  table.dataTable.order-column.stripe tbody tr.even.selected > .sorting_3 {
+	background-color: #afbdd8;
+}
+table.dataTable.display tbody tr:hover > .sorting_1,  table.dataTable.display tbody tr.odd:hover > .sorting_1,  table.dataTable.display tbody tr.even:hover > .sorting_1,  table.dataTable.order-column.hover tbody tr:hover > .sorting_1,  table.dataTable.order-column.hover tbody tr.odd:hover > .sorting_1,  table.dataTable.order-column.hover tbody tr.even:hover > .sorting_1 {
+	background-color: #eaeaea;
+}
+table.dataTable.display tbody tr:hover > .sorting_2,  table.dataTable.display tbody tr.odd:hover > .sorting_2,  table.dataTable.display tbody tr.even:hover > .sorting_2,  table.dataTable.order-column.hover tbody tr:hover > .sorting_2,  table.dataTable.order-column.hover tbody tr.odd:hover > .sorting_2,  table.dataTable.order-column.hover tbody tr.even:hover > .sorting_2 {
+	background-color: #ebebeb;
+}
+table.dataTable.display tbody tr:hover > .sorting_3,  table.dataTable.display tbody tr.odd:hover > .sorting_3,  table.dataTable.display tbody tr.even:hover > .sorting_3,  table.dataTable.order-column.hover tbody tr:hover > .sorting_3,  table.dataTable.order-column.hover tbody tr.odd:hover > .sorting_3,  table.dataTable.order-column.hover tbody tr.even:hover > .sorting_3 {
+	background-color: #eeeeee;
+}
+table.dataTable.display tbody tr:hover.selected > .sorting_1,  table.dataTable.display tbody tr.odd:hover.selected > .sorting_1,  table.dataTable.display tbody tr.even:hover.selected > .sorting_1,  table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_1,  table.dataTable.order-column.hover tbody tr.odd:hover.selected > .sorting_1,  table.dataTable.order-column.hover tbody tr.even:hover.selected > .sorting_1 {
+	background-color: #a1aec7;
+}
+table.dataTable.display tbody tr:hover.selected > .sorting_2,  table.dataTable.display tbody tr.odd:hover.selected > .sorting_2,  table.dataTable.display tbody tr.even:hover.selected > .sorting_2,  table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_2,  table.dataTable.order-column.hover tbody tr.odd:hover.selected > .sorting_2,  table.dataTable.order-column.hover tbody tr.even:hover.selected > .sorting_2 {
+	background-color: #a2afc8;
+}
+table.dataTable.display tbody tr:hover.selected > .sorting_3,  table.dataTable.display tbody tr.odd:hover.selected > .sorting_3,  table.dataTable.display tbody tr.even:hover.selected > .sorting_3,  table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_3,  table.dataTable.order-column.hover tbody tr.odd:hover.selected > .sorting_3,  table.dataTable.order-column.hover tbody tr.even:hover.selected > .sorting_3 {
+	background-color: #a4b2cb;
+}
+table.dataTable.no-footer {
+	border-bottom: 1px solid #E1E1E1;
+}
+table.dataTable.nowrap th,  table.dataTable.nowrap td {
+	white-space: nowrap;
+}
+table.dataTable.compact thead th,  table.dataTable.compact thead td {
+	padding: 5px 9px;
+}
+table.dataTable.compact tfoot th,  table.dataTable.compact tfoot td {
+	padding: 5px 9px 3px 9px;
+}
+table.dataTable.compact tbody th,  table.dataTable.compact tbody td {
+	padding: 4px 5px;
+}
+table.dataTable th.dt-left,  table.dataTable td.dt-left {
+	text-align: left;
+}
+table.dataTable th.dt-center,  table.dataTable td.dt-center,  table.dataTable td.dataTables_empty {
+	text-align: center;
+}
+table.dataTable th.dt-right,  table.dataTable td.dt-right {
+	text-align: right;
+}
+table.dataTable th.dt-justify,  table.dataTable td.dt-justify {
+	text-align: justify;
+}
+table.dataTable th.dt-nowrap,  table.dataTable td.dt-nowrap {
+	white-space: nowrap;
+}
+table.dataTable thead th.dt-head-left,  table.dataTable thead td.dt-head-left,  table.dataTable tfoot th.dt-head-left,  table.dataTable tfoot td.dt-head-left {
+	text-align: left;
+}
+table.dataTable thead th.dt-head-center,  table.dataTable thead td.dt-head-center,  table.dataTable tfoot th.dt-head-center,  table.dataTable tfoot td.dt-head-center {
+	text-align: center;
+}
+table.dataTable thead th.dt-head-right,  table.dataTable thead td.dt-head-right,  table.dataTable tfoot th.dt-head-right,  table.dataTable tfoot td.dt-head-right {
+	text-align: right;
+}
+table.dataTable thead th.dt-head-justify,  table.dataTable thead td.dt-head-justify,  table.dataTable tfoot th.dt-head-justify,  table.dataTable tfoot td.dt-head-justify {
+	text-align: justify;
+}
+table.dataTable thead th.dt-head-nowrap,  table.dataTable thead td.dt-head-nowrap,  table.dataTable tfoot th.dt-head-nowrap,  table.dataTable tfoot td.dt-head-nowrap {
+	white-space: nowrap;
+}
+table.dataTable tbody th.dt-body-left,  table.dataTable tbody td.dt-body-left {
+	text-align: left;
+}
+table.dataTable tbody th.dt-body-center,  table.dataTable tbody td.dt-body-center {
+	text-align: center;
+}
+table.dataTable tbody th.dt-body-right,  table.dataTable tbody td.dt-body-right {
+	text-align: right;
+}
+table.dataTable tbody th.dt-body-justify,  table.dataTable tbody td.dt-body-justify {
+	text-align: justify;
+}
+table.dataTable tbody th.dt-body-nowrap,  table.dataTable tbody td.dt-body-nowrap {
+	white-space: nowrap;
+}
+table.dataTable,  table.dataTable th,  table.dataTable td {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+/*
+## Control feature layout
+*/
+.dataTables_wrapper {
+	position: relative;
+	clear: both;
+	*zoom: 1;
+	zoom: 1;
+	font-size: 12px;
+}
+.dataTables_wrapper .dataTables_length {
+	float: left;
+}
+.dataTables_wrapper .dataTables_filter {
+	float: right;
+	text-align: right;
+}
+.dataTables_wrapper .dataTables_filter input {
+	margin-left: 0.5em;
+}
+.dataTables_wrapper .dataTables_info {
+	clear: both;
+	float: left;
+	padding-top: 0.755em;
+}
+.dataTables_wrapper .dataTables_paginate {
+	float: right;
+	text-align: right;
+	padding-top: 0.25em;
+}
+.dataTables_wrapper .dataTables_processing {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 80px;
+	margin-left: -50%;
+	margin-top: -25px;
+	text-align: center;
+	color: #808080 !important;
+	font-size: 1.2em;
+	line-height: 80px;
+	border: 0px;
+	box-shadow: none;
+	background-color: white;
+	background: -webkit-radial-gradient(center, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9)4%, rgba(255, 255, 255, 0) 60%);
+	/* Chrome10+,Safari5.1+ */
+	background: -moz-radial-gradient(center, rgba(255, 255, 255, 1) 1%, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9) 4%, rgba(255, 255, 255, 0) 60%);
+	/* FF3.6+ */
+	background: -ms-radial-gradient(center, rgba(255, 255, 255, 1) 1%, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9) 4%, rgba(255, 255, 255, 0) 60%);
+	/* IE10+ */
+	background: -o-radial-gradient(at center, rgba(255, 255, 255, 1) 1%, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9) 4%, rgba(255, 255, 255, 0) 60%);
+	/* Opera 11.10+ */
+	background: radial-gradient(center, rgba(255, 255, 255, 1) 1%, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9) 4%, rgba(255, 255, 255, 0) 60%);/* W3C */
+}
+.dataTables_wrapper .dataTables_length,  .dataTables_wrapper .dataTables_filter,  .dataTables_wrapper .dataTables_info,  .dataTables_wrapper .dataTables_processing,  .dataTables_wrapper .dataTables_paginate {
+	color: #333333;
+}
+.dataTables_wrapper .dataTables_scroll {
+	clear: both;
+}
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
+	*margin-top: -1px;
+	-webkit-overflow-scrolling: touch;
+}
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody th > div.dataTables_sizing,  .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody td > div.dataTables_sizing {
+	height: 0;
+	overflow: hidden;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+	border-bottom: 1px solid #111111;
+}
+.dataTables_wrapper.no-footer div.dataTables_scrollHead table,  .dataTables_wrapper.no-footer div.dataTables_scrollBody table {
+	border-bottom: none;
+}
+.dataTables_wrapper:after {
+	visibility: hidden;
+	display: block;
+	content: "";
+	clear: both;
+	height: 0;
+}
+@media screen and (max-width: 767px) {
+	.dataTables_wrapper .dataTables_info,  .dataTables_wrapper .dataTables_paginate {
+		float: none;
+		text-align: center;
+	}
+	.dataTables_wrapper .dataTables_paginate {
+		margin-top: 0.5em;
+	}
+}
+@media screen and (max-width: 640px) {
+	.dataTables_wrapper .dataTables_length,  .dataTables_wrapper .dataTables_filter {
+		float: none;
+		text-align: center;
+	}
+	.dataTables_wrapper .dataTables_filter {
+		margin-top: 0.5em;
+	}
+}
+
+/*
+## Responsive Table styles
+*/
+table.dataTable.dtr-inline.collapsed tbody td:first-child,  table.dataTable.dtr-inline.collapsed tbody th:first-child {
+	position: relative;
+	padding-left: 30px;
+	cursor: pointer;
+}
+table.dataTable.dtr-inline.collapsed tbody td:first-child:before,  table.dataTable.dtr-inline.collapsed tbody th:first-child:before {
+	top: 8px;
+	left: 4px;
+	height: 16px;
+	width: 16px;
+	display: block;
+	position: absolute;
+	color: white;
+	border: 2px solid white;
+	border-radius: 16px;
+	text-align: center;
+	line-height: 14px;
+	box-shadow: 0 0 3px #444;
+	box-sizing: content-box;
+	content: '+';
+	background-color: #31b131;
+}
+table.dataTable.dtr-inline.collapsed tbody td:first-child.dataTables_empty:before,  table.dataTable.dtr-inline.collapsed tbody th:first-child.dataTables_empty:before {
+	display: none;
+}
+table.dataTable.dtr-inline.collapsed tbody tr.parent td:first-child:before,  table.dataTable.dtr-inline.collapsed tbody tr.parent th:first-child:before {
+	content: '-';
+	background-color: #d33333;
+}
+table.dataTable.dtr-inline.collapsed tbody tr.child td:before {
+	display: none;
+}
+table.dataTable.dtr-column tbody td.control,  table.dataTable.dtr-column tbody th.control {
+	position: relative;
+	cursor: pointer;
+}
+table.dataTable.dtr-column tbody td.control:before,  table.dataTable.dtr-column tbody th.control:before {
+	top: 50%;
+	left: 50%;
+	height: 16px;
+	width: 16px;
+	margin-top: -10px;
+	margin-left: -10px;
+	display: block;
+	position: absolute;
+	color: white;
+	border: 2px solid white;
+	border-radius: 16px;
+	text-align: center;
+	line-height: 14px;
+	box-shadow: 0 0 3px #444;
+	box-sizing: content-box;
+	content: '+';
+	background-color: #31b131;
+}
+table.dataTable.dtr-column tbody tr.parent td.control:before,  table.dataTable.dtr-column tbody tr.parent th.control:before {
+	content: '-';
+	background-color: #d33333;
+}
+table.dataTable tr.child {
+	padding: 0.5em 1em;
+}
+table.dataTable tr.child:hover {
+	background: transparent !important;
+}
+table.dataTable tr.child ul {
+	display: inline-block;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+table.dataTable tr.child ul li {
+	border-bottom: 1px solid #efefef;
+	padding: 0.5em 0;
+	white-space: nowrap;
+}
+table.dataTable tr.child ul li:first-child {
+	padding-top: 0;
+}
+table.dataTable tr.child ul li:last-child {
+	border-bottom: none;
+}
+table.dataTable tr.child span.dtr-title {
+	display: inline-block;
+	min-width: 75px;
+	font-weight: bold;
+}

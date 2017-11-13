@@ -1,0 +1,457 @@
+/**********************************************
+
+        *** SoluteDNS CE for WHMCS ***
+
+File:					template/css/client.css
+File version:			0.17.001
+Date:					09-11-2017
+
+Copyright (C) NetDistrict 2013-2017
+All Rights Reserved
+
+**********************************************/
+
+/*
+## General CSS
+*/
+h4 .label {
+	font-size: 60%;
+}
+.nav-tabs .title {
+	position: absolute;
+}
+
+/*
+## Loading CSS
+*/
+.data_spinner {
+	width: 100px;
+	text-align: center;
+	display: inline-block;
+}
+.data_spinner > div {
+	width: 18px;
+	height: 18px;
+	background-color: #333;
+	border-radius: 100%;
+	display: inline-block;
+	-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+	margin-left: 7px;
+	margin-right: 7px;
+}
+.data_spinner .bounce1 {
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+.data_spinner .bounce2 {
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+@-webkit-keyframes sk-bouncedelay {
+	0%, 80%, 100% {
+		-webkit-transform: scale(0)
+	}
+	40% {
+		-webkit-transform: scale(1.0)
+	}
+}
+@keyframes sk-bouncedelay {
+	0%, 80%, 100% {
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	}
+	40% {
+		-webkit-transform: scale(1.0);
+		transform: scale(1.0);
+	}
+}
+
+/*
+## Checkboxes Buttons
+*/
+.checkbox {
+	padding-left: 6px;
+}
+.tablecheckbox {
+	padding-top: 9px;
+	padding-left: 8px;
+	width: 100%;
+	margin-left: 50%;
+}
+.checkbox label {
+	display: inline-block;
+	position: relative;
+	padding-left: 5px;
+}
+.checkbox label::before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	width: 17px;
+	height: 17px;
+	left: 0;
+	margin-left: -30px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	background-color: #fff;
+	-webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+	-o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+	transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+.checkbox label::after {
+	display: inline-block;
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	left: 0;
+	top: 0;
+	margin-left: -30px;
+	padding-left: 3px;
+	padding-top: 1px;
+	font-size: 11px;
+	color: #555555;
+}
+.checkbox input[type="checkbox"] {
+	opacity: 0;
+}
+.checkbox input[type="checkbox"]:focus + label::before {
+	outline: thin dotted;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+.checkbox input[type="checkbox"]:checked + label::after {
+	font-family: 'FontAwesome';
+	content: "\f00c";
+}
+.checkbox input[type="checkbox"]:disabled + label {
+	opacity: 0.65;
+}
+.checkbox input[type="checkbox"]:disabled + label::before {
+	background-color: #eeeeee;
+	cursor: not-allowed;
+}
+.checkbox.checkbox-circle label::before {
+	border-radius: 50%;
+}
+.checkbox.checkbox-inline {
+	margin-top: 0;
+}
+.checkbox-primary input[type="checkbox"]:checked + label::before {
+	background-color: #428bca;
+	border-color: #428bca;
+}
+.checkbox-primary input[type="checkbox"]:checked + label::after {
+	color: #fff;
+}
+.checkbox-danger input[type="checkbox"]:checked + label::before {
+	background-color: #d9534f;
+	border-color: #d9534f;
+}
+.checkbox-danger input[type="checkbox"]:checked + label::after {
+	color: #fff;
+}
+.checkbox-info input[type="checkbox"]:checked + label::before {
+	background-color: #5bc0de;
+	border-color: #5bc0de;
+}
+.checkbox-info input[type="checkbox"]:checked + label::after {
+	color: #fff;
+}
+.checkbox-warning input[type="checkbox"]:checked + label::before {
+	background-color: #f0ad4e;
+	border-color: #f0ad4e;
+}
+.checkbox-warning input[type="checkbox"]:checked + label::after {
+	color: #fff;
+}
+.checkbox-success input[type="checkbox"]:checked + label::before {
+	background-color: #5cb85c;
+	border-color: #5cb85c;
+}
+.checkbox-success input[type="checkbox"]:checked + label::after {
+	color: #fff;
+}
+
+/*
+## Bootstrap
+*/
+.tooltip-inner {
+	max-width: none;
+	white-space: nowrap;
+}
+.dropmenu_desc {
+	margin-left: 10px;
+}
+.dnsfield {
+	width: 100% !important;
+}
+
+/*
+## NProgress Bar
+*/
+
+/* Make clicks pass-through */
+#nprogress {
+	pointer-events: none;
+}
+#nprogress .bar {
+	background: #29d;
+	position: fixed;
+	z-index: 1031;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 3px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+	display: block;
+	position: absolute;
+	right: 0px;
+	width: 100px;
+	height: 100%;
+	box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+	opacity: 0.5;
+	-webkit-transform: rotate(1deg) translate(0px, 0px);
+	-ms-transform: rotate(1deg) translate(0px, 0px);
+	transform: rotate(1deg) translate(0px, 0px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+	display: block;
+	position: fixed;
+	z-index: 1031;
+	top: 15px;
+	right: 15px;
+}
+#nprogress .spinner-icon {
+	width: 18px;
+	height: 18px;
+	box-sizing: border-box;
+	border: solid 2px transparent;
+	border-top-color: #29d;
+	border-left-color: #29d;
+	border-radius: 50%;
+	-webkit-animation: nprogress-spinner 400ms linear infinite;
+	animation: nprogress-spinner 400ms linear infinite;
+}
+.nprogress-custom-parent {
+	overflow: hidden;
+	position: relative;
+}
+.nprogress-custom-parent #nprogress .spinner, .nprogress-custom-parent #nprogress .bar {
+	position: absolute;
+}
+@-webkit-keyframes nprogress-spinner {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+@keyframes nprogress-spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/*
+## Alert Boxes
+*/
+.alert2 {
+	padding: 18px;
+	margin: 10px 0;
+	border: 1px solid #eee;
+	border-left-width: 5px;
+	border-radius: 3px;
+	background-color: #FDFDFD;
+}
+.alert2 h4 {
+	margin-top: 0;
+	margin-bottom: 5px;
+	padding: 0;
+}
+.alert2 p:last-child {
+	margin-bottom: 0;
+	font-size: 12px;
+	line-height: 1.42857;
+	color: #333;
+	padding: 0;
+}
+.alert2 code {
+	border-radius: 3px
+}
+.alert2 {
+	margin-top: 5px
+}
+.alert2-danger {
+	border-color: #F9E8E8;
+	border-left-color: #c60f13
+}
+.alert2-danger h4 {
+	color: #c60f13
+}
+.msg .alert2-danger p {
+	font-weight: bold;
+	color: #c60f13
+}
+.alert2-warning {
+	border-color: #FBEDDB;
+	border-left-color: #e3b000
+}
+.alert2-warning h4 {
+	color: #e3b000
+}
+.msg .alert2-warning p {
+	font-weight: bold;
+	color: #e3b000
+}
+.alert2-info {
+	border-color: #D6E3F8;
+	border-left-color: #2ba6cb
+}
+.alert2-info h4 {
+	color: #2ba6cb
+}
+.msg .alert2-info p {
+	font-weight: bold;
+	color: #2ba6cb
+}
+.alert2-success {
+	border-color: #C7D7C4;
+	border-left-color: #5da423;
+}
+.alert2-success h4 {
+	color: #5da423
+}
+.msg .alert2-success p {
+	font-weight: bold;
+	color: #5da423
+}
+
+/*
+## Control feature layout
+*/
+.dataTables_wrapper .dataTables_processing {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 80px;
+	margin-left: -50%;
+	margin-top: 0px !important;
+	text-align: center;
+	color: #808080 !important;
+	font-size: 1.2em;
+	line-height: 80px;
+	border: 0px;
+	box-shadow: none;
+	background-color: white;
+	background: -webkit-radial-gradient(center, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9)4%, rgba(255, 255, 255, 0) 60%);
+	/* Chrome10+,Safari5.1+ */
+	background: -moz-radial-gradient(center, rgba(255, 255, 255, 1) 1%, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9) 4%, rgba(255, 255, 255, 0) 60%);
+	/* FF3.6+ */
+	background: -ms-radial-gradient(center, rgba(255, 255, 255, 1) 1%, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9) 4%, rgba(255, 255, 255, 0) 60%);
+	/* IE10+ */
+	background: -o-radial-gradient(at center, rgba(255, 255, 255, 1) 1%, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9) 4%, rgba(255, 255, 255, 0) 60%);
+	/* Opera 11.10+ */
+	background: radial-gradient(center, rgba(255, 255, 255, 1) 1%, rgba(255, 255, 255, 0.9) 1%, rgba(255, 255, 255, 0.9) 4%, rgba(255, 255, 255, 0) 60%);/* W3C */
+}
+
+/*
+## Responsive Table styles
+*/
+table.dataTable.dtr-inline.collapsed tbody td:first-child, table.dataTable.dtr-inline.collapsed tbody th:first-child {
+	position: relative;
+	padding-left: 30px;
+	cursor: pointer;
+}
+table.dataTable.dtr-inline.collapsed tbody td:first-child:before, table.dataTable.dtr-inline.collapsed tbody th:first-child:before {
+	top: 8px;
+	left: 4px;
+	height: 16px;
+	width: 16px;
+	display: block;
+	position: absolute;
+	color: white;
+	border: 2px solid white;
+	border-radius: 16px;
+	text-align: center;
+	line-height: 14px;
+	box-shadow: 0 0 3px #444;
+	box-sizing: content-box;
+	content: '+';
+	background-color: #31b131;
+}
+table.dataTable.dtr-inline.collapsed tbody td:first-child.dataTables_empty:before, table.dataTable.dtr-inline.collapsed tbody th:first-child.dataTables_empty:before {
+	display: none;
+}
+table.dataTable.dtr-inline.collapsed tbody tr.parent td:first-child:before, table.dataTable.dtr-inline.collapsed tbody tr.parent th:first-child:before {
+	content: '-';
+	background-color: #d33333;
+}
+table.dataTable.dtr-inline.collapsed tbody tr.child td:before {
+	display: none;
+}
+table.dataTable.dtr-column tbody td.control, table.dataTable.dtr-column tbody th.control {
+	position: relative;
+	cursor: pointer;
+}
+table.dataTable.dtr-column tbody td.control:before, table.dataTable.dtr-column tbody th.control:before {
+	top: 50%;
+	left: 50%;
+	height: 16px;
+	width: 16px;
+	margin-top: -10px;
+	margin-left: -10px;
+	display: block;
+	position: absolute;
+	color: white;
+	border: 2px solid white;
+	border-radius: 16px;
+	text-align: center;
+	line-height: 14px;
+	box-shadow: 0 0 3px #444;
+	box-sizing: content-box;
+	content: '+';
+	background-color: #31b131;
+}
+table.dataTable.dtr-column tbody tr.parent td.control:before, table.dataTable.dtr-column tbody tr.parent th.control:before {
+	content: '-';
+	background-color: #d33333;
+}
+table.dataTable tr.child {
+	padding: 0.5em 1em;
+}
+table.dataTable tr.child:hover {
+	background: transparent !important;
+}
+table.dataTable tr.child ul {
+	display: inline-block;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+table.dataTable tr.child ul li {
+	border-bottom: 1px solid #efefef;
+	padding: 0.5em 0;
+	white-space: nowrap;
+}
+table.dataTable tr.child ul li:first-child {
+	padding-top: 0;
+}
+table.dataTable tr.child ul li:last-child {
+	border-bottom: none;
+}
+table.dataTable tr.child span.dtr-title {
+	display: inline-block;
+	min-width: 75px;
+	font-weight: bold;
+}
