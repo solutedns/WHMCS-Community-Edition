@@ -1332,9 +1332,9 @@ class Controller {
 				foreach ($records as $record) {
 
 					$send['records'][] = [
-						'name' => str_replace(['{domain}'], '', $record->name),
+						'name' => str_replace(['{domain}'], $data['zone'], $record->name),
 						'type' => $record->type,
-						'content' => str_replace(['{domain}'], '', $record->content),
+						'content' => str_replace(['{domain}'], $data['zone'], $record->content),
 						'ttl' => $record->ttl,
 						'prio' => $record->prio,
 					];
