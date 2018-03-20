@@ -389,7 +389,7 @@ add_hook('AdminAreaHeadOutput', 1, function($vars) {
 
 	try {
 
-		if (!isset($_GET['module']) && $_GET['module'] != 'soltuedns') {
+		if (!isset($_GET['module']) || $_GET['module'] != 'solutedns') {
 			return NULL;
 		}
 
