@@ -7,7 +7,7 @@
 		<div class="text-right">
 			<!-- Split button -->
 			<div class="btn-group">
-				<button type="button" class="btn btn-warning btn-sm" onclick="dnssec('rectify', '{$domain->id}');" data-toggle="tooltip" data-placement="bottom" title="{$LANG.admin_manage_dnssec_rectify}" {if Controller::config(maintenance)}DISABLED{/if}><span class="glyphicon glyphicon-flash" aria-hidden="true"></span> {$LANG.admin_dnssec_rectify}</button>
+				<button type="button" class="btn btn-warning btn-sm" onclick="dnssec('rectify', '{$domain->id}');" data-toggle="tooltip" data-placement="bottom" title="{$LANG.admin_manage_dnssec_rectify}" {if Controller::config(maintenance)}DISABLED{/if}><span class="glyphicon glyphicon-flash" aria-hidden="true"></span></button>
 			</div>
 
 			<!-- Single button -->
