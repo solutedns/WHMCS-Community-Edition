@@ -2166,7 +2166,7 @@ class Controller {
 			if ($_GET['table'] == 'sdns_template_records') {
 				$where = "product_id = '$domain_id'";
 			} else {
-				$where = "domain_id = '$domain_id'";
+				$where = "domain_id = '$domain_id' AND NOT (type = '')";
 			}
 
 			echo json_encode(

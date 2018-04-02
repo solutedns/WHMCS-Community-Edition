@@ -718,7 +718,7 @@ class Controller {
 
 			// Where condition
 			$option = empty($this->config('hide_soa')) ? NULL : " AND NOT (type = 'SOA')";
-			$where = "domain_id = '$domain_id'" . $option;
+			$where = "domain_id = '$domain_id' AND NOT (type = '')" . $option;
 
 			echo json_encode(
 					SSP::complex($_GET, $ns_details, $table, $primaryKey, $columns, $where, NULL)
