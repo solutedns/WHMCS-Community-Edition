@@ -140,7 +140,7 @@ $_ADDONLANG['admin_system_license_expires'] = "Expires";
 
 $_ADDONLANG['admin_system_license_licensed_to'] = "Licensed to";
 
-$_ADDONLANG['admin_system_license_limit'] = "Lincesed zones";
+$_ADDONLANG['admin_system_license_limit'] = "Licensed zones";
 $_ADDONLANG['admin_system_license_addons'] = "Addons";
 $_ADDONLANG['admin_system_license_valid_domains'] = "Valid domain's";
 $_ADDONLANG['admin_system_license_valid_ips'] = "Valid ip's";
