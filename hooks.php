@@ -294,9 +294,7 @@ add_hook('ClientAreaPrimarySidebar', 1, function(MenuItem $primarySidebar) {
 
 	try {
 		
-		$ca = new ClientArea();
-
-		if ($ca->isLoggedIn()) {
+		if ($_SESSION['uid']) {
 
 			// Set Domain ID and DNS Management state
 			$tbldata = NULL;
@@ -468,9 +466,7 @@ add_hook('ClientAreaHeadOutput', 1, function($vars) {
 
 	try {
 	
-		$ca = new ClientArea();
-
-		if ($ca->isLoggedIn()) {
+		if ($_SESSION['uid']) {
 
 			if (
 					$vars['filename'] == 'index' && App::isInRequest('m') && App::getFromRequest('m') == 'solutedns'
