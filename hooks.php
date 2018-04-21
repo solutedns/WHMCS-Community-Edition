@@ -6,7 +6,7 @@
  * @file        hooks.php
  * @package     solutedns-ce-whmcs
  *
- * Copyright (c) 2017 NetDistrict
+ * Copyright (c) 2018 NetDistrict
  * All rights reserved.
  *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND ANY
@@ -32,6 +32,7 @@
  */
 use WHMCS\Database\Capsule;
 use WHMCS\View\Menu\Item as MenuItem;
+use WHMCS\ClientArea;
 use WHMCS\Module\Addon\SoluteDNS\Admin\Controller as SDNS_Controller;
 use WHMCS\Module\Addon\SoluteDNS\System\Cron;
 use solutedns\Dns\Zones;
@@ -292,75 +293,80 @@ add_hook('AfterCronJob', 1, function($vars) {
 add_hook('ClientAreaPrimarySidebar', 1, function(MenuItem $primarySidebar) {
 
 	try {
+		
+		$ca = new ClientArea();
 
-		// Set Domain ID and DNS Management state
-		$tbldata = NULL;
+		if ($ca->isLoggedIn()) {
 
-		if (isset($_REQUEST['id'])) {
-
-			$domain_id = (int) filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-
-			$tbldata = Capsule::table('tbldomains')->select('dnsmanagement')->where('id', $domain_id)->first();
-		}
-
-		// Get custom URL
-		$custom_url = SDNS_Controller::config('client_urlrewrite');
-		$custom_url = !empty($custom_url) ? $custom_url . '/' : 'index.php?m=solutedns&id=';
-
-		// Add Sidebar to DNS Management page
-		if (App::getCurrentFilename() == 'index' && isset($_REQUEST['m']) && $_REQUEST['m'] == 'solutedns') {
-
-			// Primary Sidebar
-			if (is_null($primarySidebar->getChild('Domain Details Management'))) {
-
-				$primarySidebar->addChild('Domain Details Management')
-						->setLabel(Lang::trans('manage'))
-						->setIcon('fa-gear');
-
-				$primarySidebar->getChild('Domain Details Management')
-						->addChild('Overview')
-						->setLabel(Lang::trans('overview'))
-						->setUri('clientarea.php?action=domaindetails&id=' . $domain_id . '#tabOverview')
-						->setOrder(10);
-
-				$primarySidebar->getChild('Domain Details Management')
-						->addChild('Auto Renew Settings')
-						->setLabel(Lang::trans('domainsautorenew'))
-						->setUri('clientarea.php?action=domaindetails&id=' . $domain_id . '#tabAutorenew')
-						->setOrder(20);
-
-				$primarySidebar->getChild('Domain Details Management')
-						->addChild('Domain Addons')
-						->setLabel(Lang::trans('domainaddons'))
-						->setUri('clientarea.php?action=domaindetails&id=' . $domain_id . '#tabAddons')
-						->setOrder(30);
-
-				$primarySidebar->getChild('Domain Details Management')
-						->addChild('Manage DNS Host Records')
-						->setLabel(Lang::trans('domaindnsmanagement'))
-						->setUri($custom_url . $domain_id)
-						->setClass('active')
-						->setOrder(40);
+			// Set Domain ID and DNS Management state
+			$tbldata = NULL;
+	
+			if (isset($_REQUEST['id'])) {
+	
+				$domain_id = (int) filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+	
+				$tbldata = Capsule::table('tbldomains')->select('dnsmanagement')->where('id', $domain_id)->first();
 			}
-		}
-
-		// Set or Update DNS Management menu item
-		if (App::getCurrentFilename() == 'clientarea' && isset($_REQUEST['action']) && $_REQUEST['action'] == 'domaindetails') {
-
-			if (!is_null($primarySidebar->getChild('Domain Details Management')->getChild('Manage DNS Host Records')) && empty(SDNS_Controller::config('respect_registrar'))) {
-
-				$primarySidebar->getChild('Domain Details Management')
-						->getChild('Manage DNS Host Records')
-						->setUri($custom_url . $domain_id);
+	
+			// Get custom URL
+			$custom_url = SDNS_Controller::config('client_urlrewrite');
+			$custom_url = !empty($custom_url) ? $custom_url . '/' : 'index.php?m=solutedns&id=';
+	
+			// Add Sidebar to DNS Management page
+			if (App::getCurrentFilename() == 'index' && isset($_REQUEST['m']) && $_REQUEST['m'] == 'solutedns') {
+	
+				// Primary Sidebar
+				if (is_null($primarySidebar->getChild('Domain Details Management'))) {
+	
+					$primarySidebar->addChild('Domain Details Management')
+							->setLabel(Lang::trans('manage'))
+							->setIcon('fa-gear');
+	
+					$primarySidebar->getChild('Domain Details Management')
+							->addChild('Overview')
+							->setLabel(Lang::trans('overview'))
+							->setUri('clientarea.php?action=domaindetails&id=' . $domain_id . '#tabOverview')
+							->setOrder(10);
+	
+					$primarySidebar->getChild('Domain Details Management')
+							->addChild('Auto Renew Settings')
+							->setLabel(Lang::trans('domainsautorenew'))
+							->setUri('clientarea.php?action=domaindetails&id=' . $domain_id . '#tabAutorenew')
+							->setOrder(20);
+	
+					$primarySidebar->getChild('Domain Details Management')
+							->addChild('Domain Addons')
+							->setLabel(Lang::trans('domainaddons'))
+							->setUri('clientarea.php?action=domaindetails&id=' . $domain_id . '#tabAddons')
+							->setOrder(30);
+	
+					$primarySidebar->getChild('Domain Details Management')
+							->addChild('Manage DNS Host Records')
+							->setLabel(Lang::trans('domaindnsmanagement'))
+							->setUri($custom_url . $domain_id)
+							->setClass('active')
+							->setOrder(40);
+				}
 			}
-
-			if (is_null($primarySidebar->getChild('Domain Details Management')->getChild('Manage DNS Host Records')) && $tbldata->dnsmanagement == 1) {
-
-				$primarySidebar->getChild('Domain Details Management')
-						->addChild('Manage DNS Host Records')
-						->setLabel(Lang::trans('domaindnsmanagement'))
-						->setUri($custom_url . $domain_id)
-						->setOrder(100);
+	
+			// Set or Update DNS Management menu item
+			if (App::getCurrentFilename() == 'clientarea' && isset($_REQUEST['action']) && $_REQUEST['action'] == 'domaindetails') {
+	
+				if (!is_null($primarySidebar->getChild('Domain Details Management')->getChild('Manage DNS Host Records')) && empty(SDNS_Controller::config('respect_registrar'))) {
+	
+					$primarySidebar->getChild('Domain Details Management')
+							->getChild('Manage DNS Host Records')
+							->setUri($custom_url . $domain_id);
+				}
+	
+				if (is_null($primarySidebar->getChild('Domain Details Management')->getChild('Manage DNS Host Records')) && $tbldata->dnsmanagement == 1) {
+	
+					$primarySidebar->getChild('Domain Details Management')
+							->addChild('Manage DNS Host Records')
+							->setLabel(Lang::trans('domaindnsmanagement'))
+							->setUri($custom_url . $domain_id)
+							->setOrder(100);
+				}
 			}
 		}
 	} catch (Exception $e) {
@@ -461,18 +467,22 @@ HTML;
 add_hook('ClientAreaHeadOutput', 1, function($vars) {
 
 	try {
+	
+		$ca = new ClientArea();
 
-		if (
-				$vars['filename'] == 'index' && App::isInRequest('m') && App::getFromRequest('m') == 'solutedns'
-		) {
+		if ($ca->isLoggedIn()) {
 
-			// Get custom URL
-			$custom_url = !empty(SDNS_Controller::config('client_urlrewrite')) ? '../' : NULL;
-
-			// Set paging
-			$paging = SDNS_Controller::Config('dns_pagination') ? 'true' : 'false';
-
-			return
+			if (
+					$vars['filename'] == 'index' && App::isInRequest('m') && App::getFromRequest('m') == 'solutedns'
+			) {
+	
+				// Get custom URL
+				$custom_url = !empty(SDNS_Controller::config('client_urlrewrite')) ? '../' : NULL;
+	
+				// Set paging
+				$paging = SDNS_Controller::Config('dns_pagination') ? 'true' : 'false';
+	
+				return
 					<<<HTML
 <!-- SoluteDNS CSS -->
 	<link href="{$custom_url}modules/addons/solutedns/templates/css/client.css" rel="stylesheet" type="text/css" />
@@ -525,8 +535,9 @@ add_hook('ClientAreaHeadOutput', 1, function($vars) {
 		}
 	</script>
 HTML;
-		} else {
-			return NULL;
+			} else {
+				return NULL;
+			}
 		}
 	} catch (Exception $e) {
 		logActivity('DNS ERROR [ClientAreaHeadOutput]:' . $e->getMessage(), 0);
