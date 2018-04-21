@@ -473,7 +473,12 @@ add_hook('ClientAreaHeadOutput', 1, function($vars) {
 			) {
 	
 				// Get custom URL
-				$custom_url = !empty(SDNS_Controller::config('client_urlrewrite')) ? '../' : NULL;
+				if (substr($_SERVER[REQUEST_URI],-1) == '/') {
+					$custom_url = !empty(SDNS_Controller::config('client_urlrewrite')) ? '../' : NULL;
+				} else {
+					$custom_url = NULL;
+				}
+				
 	
 				// Set paging
 				$paging = SDNS_Controller::Config('dns_pagination') ? 'true' : 'false';
@@ -509,7 +514,7 @@ add_hook('ClientAreaHeadOutput', 1, function($vars) {
 					"processing": true,
 					"serverSide": true,
 					"responsive": true,
-					"ajax": setDataURL() + 'index.php?m=solutedns&action=get&table=' + nTable + '&data=' + nData,
+					"ajax": '{$custom_url}index.php?m=solutedns&action=get&table=' + nTable + '&data=' + nData,
 					"stateSave": true,
 					"sorting": [[1,"asc"]],
 					"paging": {$paging},
