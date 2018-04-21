@@ -973,8 +973,8 @@ class Controller {
 
 					$arr[] = [
 						'status' => 'success',
-						'title' => $LANG['global_msg_dns_record_added_title'],
-						'msg' => $LANG['global_msg_dns_record_added_desc'],
+						'title' => $LANG['global_msg_dns_record_edited_title'],
+						'msg' => $LANG['global_msg_dns_record_edited_desc'],
 						'fieldreset' => true,
 						'tablereload' => true
 					];
