@@ -3,10 +3,10 @@
  *** SoluteDNS CE for WHMCS ***
  
  File:					template/js/client.js
- File version:			0.17.001
- Date:					09-11-2017
+ File version:			0.18.001
+ Date:					21-04-2018
  
- Copyright (C) NetDistrict 2016-2017
+ Copyright (C) NetDistrict 2016-2018
  All Rights Reserved
  
  **********************************************/
@@ -121,13 +121,6 @@ function setMessage(title, desc, status, tableReload, pageReload, fieldReset, ms
 
 }
 
-function updateSettings(element) {
-	var fields = $("#" + element + " :input").serializeArray();
-	var data = JSON.stringify(fields);
-
-	sendData(data)
-}
-
 function resetMessages() {
 
 	/* Clear Message Box */
@@ -181,11 +174,6 @@ function setErrorMark(fields) {
 
 function isDataTable(nTable) {
 	return $.fn.DataTable.fnIsDataTable('#' + nTable);
-}
-
-function selectTemplate(value) {
-	SDNS_recordTable.fnDestroy();
-	drawRecords('sdns_template_records', value);
 }
 
 function edit(id) {
@@ -271,7 +259,7 @@ function clearErrorField() {
 
 }
 
-function record_add(type) {
+function record_add() {
 
 	setRecord(0);
 	clearErrorField()
@@ -283,28 +271,15 @@ function record_add(type) {
 	var var4 = $("#sdns_prio_0").val();
 	var var5 = $("#sdns_ttl_0").val();
 
-	if (type == 'template') {
-		var item = {
-			action: 'addtemplate',
-			zone: zone,
-			name: var1,
-			type: var2,
-			content: var3,
-			prio: var4,
-			ttl: var5,
-			template: true
-		};
-	} else {
-		var item = {
-			action: 'addrecord',
-			zone: zone,
-			name: var1,
-			type: var2,
-			content: var3,
-			prio: var4,
-			ttl: var5
-		};
-	}
+	var item = {
+		action: 'addrecord',
+		zone: zone,
+		name: var1,
+		type: var2,
+		content: var3,
+		prio: var4,
+		ttl: var5
+	};
 
 	jsonString = JSON.stringify(item);
 
@@ -312,7 +287,7 @@ function record_add(type) {
 
 }
 
-function record_edit(type, record_id) {
+function record_edit(record_id) {
 
 	clearErrorField()
 
@@ -324,30 +299,16 @@ function record_edit(type, record_id) {
 	var var4 = $("#sdns_prio_" + record_id).val();
 	var var5 = $("#sdns_ttl_" + record_id).val();
 
-	if (type == 'template') {
-		var item = {
-			action: 'edittemplate',
-			zone: zone,
-			record_id: record_id,
-			name: var1,
-			type: var2,
-			content: var3,
-			prio: var4,
-			ttl: var5,
-			template: true
-		};
-	} else {
-		var item = {
-			action: 'editrecord',
-			zone: zone,
-			record_id: record_id,
-			name: var1,
-			type: var2,
-			content: var3,
-			prio: var4,
-			ttl: var5
-		};
-	}
+	var item = {
+		action: 'editrecord',
+		zone: zone,
+		record_id: record_id,
+		name: var1,
+		type: var2,
+		content: var3,
+		prio: var4,
+		ttl: var5
+	};
 
 	jsonString = JSON.stringify(item);
 
@@ -355,25 +316,16 @@ function record_edit(type, record_id) {
 
 }
 
-function record_delete(type) {
+function record_delete() {
 
 	var zone = $("#sdns_zone").val();
 	var record_id = $("#sdns_record").val();
 
-	if (type == 'template') {
-		var item = {
-			action: 'deletetemplate',
-			zone: zone,
-			record_id: record_id,
-			template: true
-		};
-	} else {
-		var item = {
-			action: 'deleterecord',
-			zone: zone,
-			record_id: record_id
-		};
-	}
+	var item = {
+		action: 'deleterecord',
+		zone: zone,
+		record_id: record_id
+	};
 
 	jsonString = JSON.stringify(item);
 
