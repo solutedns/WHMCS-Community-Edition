@@ -215,9 +215,6 @@ add_hook('DomainEdit', 1, function($vars) {
 
 	try {
 
-		// Set Classes
-		$zones = new Zones();
-
 		if (SDNS_Controller::Config('auto_delete')) {
 
 			$status = SDNS_Controller::inConfig('auto_delete');
