@@ -163,9 +163,6 @@ add_hook('DomainDelete', 1, function($vars) {
 
 	try {
 
-		// Set Classes
-		$zones = new Zones();
-
 		if (SDNS_Controller::Config('auto_delete_whmcs')) {
 
 			// Check if no other registration exists
