@@ -2303,7 +2303,7 @@ class Controller {
 	/**
 	 * IDN check
 	 */
-	public static function idnCheck($domain) {
+	public static function idnCheck() {
 		
 		if (extension_loaded('intl')) {
 			return true;
