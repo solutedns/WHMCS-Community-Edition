@@ -48,7 +48,7 @@ function solutedns_config() {
 		'description' => 'DNS Management for PowerDNS nameservers with MySQL back-end.',
 		'author' => 'NetDistrict',
 		'language' => 'english',
-		'version' => '0.17.001',
+		'version' => '0.18.001',
 	];
 }
 
@@ -315,9 +315,18 @@ function solutedns_deactivate() {
  * @return void
  */
 function solutedns_upgrade($vars) {
-	$currentlyInstalledVersion = $vars['version'];
-
-	// No previous versions
+	$currentlyVersion = $vars['version'];
+	
+	if (version_compare($currentlyVersion, '0.18.001', '<')) {
+		// No db changes
+		$newVersion = 'v0.18.001';
+	}
+	
+	###
+	
+	if ($error != true) {
+		logActivity('SoluteDNS has been upgraded to: '. $newVersion .'.');	
+	}
 }
 
 /**
