@@ -6,7 +6,7 @@
  * @file        Configuration File
  * @package     solutedns
  *
- * Copyright (c) 2017 NetDistrict
+ * Copyright (c) 2018 NetDistrict
  * All rights reserved.
  *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND ANY
@@ -51,7 +51,7 @@ if ($clr->ns_details('ns5') !== '') {
 	$nameservers[] = $clr->ns_details('ns5');
 }
 
-// Configuion
+// Configuration
 return [
 	'license' => $clr->config('license'),
 	'database' => [
@@ -71,7 +71,7 @@ return [
 		'powerdns_version' => $clr->ns_details('version') # 3/4
 	],
 	'records' => [
-		'allowed' => $clr->config('record_types'),
+		'allowed' => ($_SESSION['adminid']) ? $clr->config('record_types').',SOA' : $clr->config('record_types'),
 		'limit' => $clr->config('record_limit'),
 		'soa' => [
 			'hostmaster' => str_replace(['{', '}'], ':', $clr->config('soa_hostmaster')),
