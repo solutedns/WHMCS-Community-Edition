@@ -629,7 +629,9 @@ class Controller {
 				[
 					'db' => 'id', 'dt' => 0,
 					'formatter' => function( $d, $row ) {
-						return '<div class="checkbox tablecheckbox"><input type="checkbox" name="sdns_select" id="sdns_select_' . $row['id'] . '" value="' . $row['id'] . '" style="display: hidden;" ' . $this->maintenance . '/><label for="sdns_select_' . $row['id'] . '" /></div>';
+						$option = ($row['type'] == 'NS') ? empty($this->config('disable_ns')) ? NULL : " DISABLED" : NULL;
+						$option = ($row['type'] == 'SOA') ? " DISABLED" : $option;
+						return '<div class="checkbox tablecheckbox"><input type="checkbox" name="sdns_select" id="sdns_select_' . $row['id'] . '" value="' . $row['id'] . '" style="display: hidden;" ' . $this->maintenance . $option . '/><label for="sdns_select_' . $row['id'] . '" /></div>';
 					}
 				],
 				[
