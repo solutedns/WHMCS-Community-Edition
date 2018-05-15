@@ -2,7 +2,7 @@
 
 ## SoluteDNS Community Edition for WHMCS
 
-Copyright (C) NetDistrict 2011-2017
+Copyright (C) NetDistrict 2011-2018
 All Rights Reserved
 
 ************************************************
