@@ -86,7 +86,7 @@ function solutedns_activate() {
 		$query = "INSERT IGNORE INTO mod_solutedns_settings (setting,value) VALUES ('eula', '');";
 		$pdo->exec($query);
 
-		$query = "INSERT IGNORE INTO mod_solutedns_settings (setting,value) VALUES ('record_types', 'A,AAAA,CNAME,MX,NS,SRV,TXT,SSHFP,TLSA');";
+		$query = "INSERT IGNORE INTO mod_solutedns_settings (setting,value) VALUES ('record_types', 'A,AAAA,CAA,CNAME,MX,NS,SRV,TXT,SSHFP,TLSA');";
 		$pdo->exec($query);
 
 		$query = "INSERT IGNORE INTO mod_solutedns_settings (setting,value) VALUES ('soa_hostmaster', 'hostmaster.{domain}');";
