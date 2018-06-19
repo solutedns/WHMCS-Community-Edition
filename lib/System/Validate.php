@@ -95,7 +95,7 @@ class Validate {
 
 			// IDN Format
 			if (extension_loaded('intl')) {
-				$content = idn_to_ascii($content);
+				$content = idn_to_ascii($content, 0, INTL_IDNA_VARIANT_UTS46);
 			}
 		}
 
@@ -105,7 +105,7 @@ class Validate {
 
 			// IDN Format
 			if (extension_loaded('intl')) {
-				$content = idn_to_ascii($content);
+				$content = idn_to_ascii($content, 0, INTL_IDNA_VARIANT_UTS46);
 			}
 		}
 

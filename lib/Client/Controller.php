@@ -835,7 +835,7 @@ class Controller {
 	public static function idn($domain) {
 		
 		if (extension_loaded('intl')) {
-			return mb_strtolower(idn_to_ascii($domain));
+			return mb_strtolower(idn_to_ascii($domain, 0, INTL_IDNA_VARIANT_UTS46));
 		} else {
 			return mb_strtolower(utf8_encode($domain));
 		}
