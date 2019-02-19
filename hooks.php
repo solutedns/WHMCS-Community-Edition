@@ -312,7 +312,7 @@ add_hook('ClientAreaPrimarySidebar', 1, function(MenuItem $primarySidebar) {
 	
 					$primarySidebar->addChild('Domain Details Management')
 							->setLabel(Lang::trans('manage'))
-							->setIcon('fa-gear');
+							->setIcon('fa-cog');
 	
 					$primarySidebar->getChild('Domain Details Management')
 							->addChild('Overview')
