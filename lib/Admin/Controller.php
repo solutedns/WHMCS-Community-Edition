@@ -757,7 +757,7 @@ class Controller {
 					if ($diff <= 15) {
 						$arr[] = [
 							'status' => 'warning',
-							'title' => $LANG['admin_msg_license_expire_title'],
+							'title' => sprintf($LANG['admin_msg_license_expire_title'], $diff),
 							'msg' => $LANG['admin_msg_license_expire_desc'],
 							'fixed' => false,
 						];
