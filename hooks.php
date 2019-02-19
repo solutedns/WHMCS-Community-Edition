@@ -367,6 +367,34 @@ add_hook('ClientAreaPrimarySidebar', 1, function(MenuItem $primarySidebar) {
 });
 
 /**
+ * Redirect WHMCS DNS to SoluteDNS
+ */
+add_hook('ClientAreaPageDomainDNSManagement', 1, function($vars) {	
+	if ($_SESSION['uid'] && App::getCurrentFilename() == 'clientarea' && filter_input(INPUT_GET, 'action', FILTER_SANITIZE_SPECIAL_CHARS) == 'domaindns' && !empty(SDNS_Controller::config('force_dns'))) {
+		
+		$domain_id = filter_input(INPUT_GET, 'domainid', FILTER_VALIDATE_INT);
+		
+		if ($domain_id) {
+			
+			// Get custom URL	
+			$custom_url = !empty(SDNS_Controller::config('client_urlrewrite')) ? SDNS_Controller::config('client_urlrewrite') : NULL;
+			
+			// Get system URL
+			$system_url = Capsule::table('tblconfiguration')->select('value')->where('setting', 'SystemURL')->first()->value;
+			
+			// Redirect to SoluteDNS
+			$url = !is_null($custom_url) ? $system_url.$custom_url.'/'.$domain_id : 'index.php?m=solutedns&id='.$domain_id;
+	
+			header('Location: '.$url, true, '302');
+			exit();
+			
+		}
+		
+	}
+	
+});
+
+/**
  * Admin Tab Field
  *
  * Add's an field to the admin's domain details field for DNS Management.

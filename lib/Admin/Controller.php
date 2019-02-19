@@ -360,6 +360,10 @@ class Controller {
 				if ($key['name'] == 'sdns_auto_todo' && Validate::input($key['value'], 'check') == true) {
 					$values[17] = $key['value'];
 				}
+				
+				if ($key['name'] == 'sdns_force_dns' && Validate::input($key['value'], 'check') == true) {
+					$values[18] = $key['value'];
+				}
 			}
 
 			// Save Allowed Records
@@ -432,6 +436,9 @@ class Controller {
 
 			$value = isset($values[17]) ? $values[17] : NULL;
 			Capsule::table('mod_solutedns_settings')->where('setting', 'auto_todo')->update(['value' => $value]);
+			
+			$value = isset($values[18]) ? $values[18] : NULL;
+			Capsule::table('mod_solutedns_settings')->where('setting', 'force_dns')->update(['value' => $value]);
 
 			// Return status message
 			if (isset($error_fields)) {

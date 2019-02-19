@@ -233,6 +233,17 @@
 		</div>
 		<div class="row">
 			<div class="col-md-3 text-right title">
+				<label for="sdns_hide_soa">{$LANG.admin_settings_force_dns}:</label>
+			</div>
+			<div class="col-md-9">
+				<div class="checkbox chx_label">
+					<input {if Controller::config(force_dns)}checked {/if}name="sdns_force_dns" id="sdns_force_dns" type="checkbox">
+					<label for="sdns_force_dns">{$LANG.admin_settings_force_dns_desc}</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 text-right title">
 				<label for="sdns_hide_soa">{$LANG.admin_settings_hide_soa}:</label>
 			</div>
 			<div class="col-md-9">

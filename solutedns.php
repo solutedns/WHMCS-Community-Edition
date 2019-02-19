@@ -48,7 +48,7 @@ function solutedns_config() {
 		'description' => 'DNS Management for PowerDNS nameservers with MySQL back-end.',
 		'author' => 'NetDistrict',
 		'language' => 'english',
-		'version' => '0.18.001',
+		'version' => '1.19.001',
 	];
 }
 
@@ -114,6 +114,9 @@ function solutedns_activate() {
 		$pdo->exec($query);
 
 		$query = "INSERT IGNORE INTO mod_solutedns_settings (setting,value) VALUES ('respect_registrar', 'on');";
+		$pdo->exec($query);
+		
+		$query = "INSERT IGNORE INTO mod_solutedns_settings (setting,value) VALUES ('force_dns', '');";
 		$pdo->exec($query);
 
 		$query = "INSERT IGNORE INTO mod_solutedns_settings (setting,value) VALUES ('hide_soa', 'on');";
@@ -320,6 +323,55 @@ function solutedns_upgrade($vars) {
 	if (version_compare($currentlyVersion, '0.18.001', '<')) {
 		// No db changes
 		$newVersion = 'v0.18.001';
+	}
+	
+	if (version_compare($currentlyVersion, '1.19.001', '<')) {
+		
+		// Database
+		$pdo = Capsule::connection()->getPdo();
+		$pdo->beginTransaction();
+	
+		try {
+	
+			$query = "ALTER TABLE mod_solutedns_nameservers MODIFY db_host varchar(254);";
+			$pdo->exec($query);
+			$query = "ALTER TABLE mod_solutedns_nameservers MODIFY db_user text;";
+			$pdo->exec($query);
+			$query = "ALTER TABLE mod_solutedns_nameservers MODIFY db_name text;";
+			$pdo->exec($query);
+			$query = "ALTER TABLE mod_solutedns_nameservers MODIFY zone_type varchar(6);";
+			$pdo->exec($query);
+			$query = "ALTER TABLE mod_solutedns_nameservers MODIFY ns0 varchar(254);";
+			$pdo->exec($query);
+			$query = "ALTER TABLE mod_solutedns_nameservers MODIFY ns1 varchar(254);";
+			$pdo->exec($query);
+			$query = "ALTER TABLE mod_solutedns_nameservers MODIFY ns2 varchar(254);";
+			$pdo->exec($query);
+			$query = "ALTER TABLE mod_solutedns_nameservers MODIFY ns3 varchar(254);";
+			$pdo->exec($query);
+			$query = "ALTER TABLE mod_solutedns_nameservers MODIFY ns4 varchar(254);";
+			$pdo->exec($query);
+			$query = "ALTER TABLE mod_solutedns_nameservers MODIFY ns5 varchar(254);";
+			$pdo->exec($query);
+			$query = "ALTER TABLE mod_solutedns_nameservers MODIFY ssh_host varchar(254);";
+			$pdo->exec($query);
+			$query = "ALTER TABLE mod_solutedns_nameservers MODIFY ssh_user text;";
+			$pdo->exec($query);
+			$query = "INSERT IGNORE INTO mod_solutedns_settings (setting,value) VALUES ('force_dns', '');";
+			$pdo->exec($query);
+	
+			$pdo->commit();
+	
+		} catch (Exception $e) {
+	
+			$pdo->rollBack();
+			$error = true;
+	
+			logActivity('SoluteDNS upgrade '.$newVersion .' failed: '. $e->getMessage());	
+
+		}
+		
+		$newVersion = 'v1.19.001';
 	}
 	
 	###
