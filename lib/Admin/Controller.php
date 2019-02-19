@@ -2187,7 +2187,7 @@ class Controller {
 	/**
 	 * Add task to cron queue.
 	 */
-	private function add_crontask($domain, $task) {
+	public function add_crontask($domain, $task) {
 
 		// Check if task already exists
 

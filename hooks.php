@@ -101,6 +101,10 @@ add_hook('AfterShoppingCartCheckout', 1, function($vars) {
 
 					// Process result
 					if (isset($result['success'])) {
+						
+						if (SDNS_Controller::ns_details('dnssec_rectify')) {
+							SDNS_Controller::add_crontask($create['domain'], 'rectify');
+						}
 
 						if (SDNS_Controller::Config('logging')) {
 							logActivity('A new zone was automatically created for: ' . $create['domain'] . '.', 0);
