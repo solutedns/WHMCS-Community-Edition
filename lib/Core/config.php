@@ -6,7 +6,7 @@
  * @file        Configuration File
  * @package     solutedns
  *
- * Copyright (c) 2018 NetDistrict
+ * Copyright (c) 2021 NetDistrict
  * All rights reserved.
  *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND ANY
@@ -32,6 +32,8 @@ use WHMCS\Module\Addon\SoluteDNS\Admin\Controller;
 $clr = new Controller();
 
 // Create Nameserver Array
+$nameservers = [];
+
 if ($clr->ns_details('ns0') !== '') {
 	$nameservers[] = $clr->ns_details('ns0');
 }
@@ -71,11 +73,11 @@ return [
 		'powerdns_version' => $clr->ns_details('version') # 3/4
 	],
 	'records' => [
-		'allowed' => ($_SESSION['adminid']) ? $clr->config('record_types').',SOA' : $clr->config('record_types'),
+		'allowed' => (isset($_SESSION['adminid'])) ? $clr->config('record_types').',SOA,NS' : $clr->config('record_types'), 
 		'limit' => $clr->config('record_limit'),
 		'soa' => [
 			'hostmaster' => str_replace(['{', '}'], ':', $clr->config('soa_hostmaster')),
-			'serial' => $clr->config('soa_serial'), # default/epoch/last
+			'serial' => $clr->config('soa_serial'), # default/epoch
 			'refresh' => $clr->config('soa_refresh'),
 			'retry' => $clr->config('soa_retry'),
 			'expire' => $clr->config('soa_expire'),
