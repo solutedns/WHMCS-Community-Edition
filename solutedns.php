@@ -422,13 +422,13 @@ function solutedns_sidebar($vars) {
 	$version = $vars['version'];
 	$_lang = $vars['_lang'];
 
-	$sidebar = '<span class="header">
-	<img class="absmiddle" src="images/icons/support.png" width="16" height="16">
+	$sidebar = '<div class="header sidebar-header">
+	<i class="fas fa-globe"></i>
 	SoluteDNS
-	</span>
+	</div>
 	<ul class="menu">
 		<li>
-		<a href="https://docs.solutedns.com/whmcs/ce/" target="_blank">Documentation</a>
+		<a href="https://docs.solutedns.com/whmcs/community-edition/getting-started/" target="_blank">Documentation</a>
 		</li>
 		<li>
 		<a href="https://forum.solutedns.com/" target="_blank">Support</a>
